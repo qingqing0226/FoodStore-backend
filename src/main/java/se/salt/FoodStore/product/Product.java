@@ -1,6 +1,7 @@
 package se.salt.FoodStore.product;
 
 import jakarta.persistence.*;
+import se.salt.FoodStore.section.Section;
 
 @Entity
 @Table(name = "products")
@@ -16,6 +17,8 @@ public class Product {
 
     private long stock;
 
+    @ManyToOne
+    @JoinColumn(name = "section_id")
     private Section section;
 
     public Product() {
@@ -70,6 +73,9 @@ public class Product {
     }
 }
 
+/*
 enum Section {
     FRUITS_VEGES, DRINKS, MEAT, DIARY, DRY_FOOD, BREAD, SNACKS
 }
+
+ */
