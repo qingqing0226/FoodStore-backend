@@ -11,6 +11,8 @@ public class Product {
     @Column(name = "product_id")
     private long id;
 
+    private String name;
+
     private double price;
 
     private String image;
@@ -24,8 +26,17 @@ public class Product {
     public Product() {
     }
 
-    public Product(long id, double price, String image, long stock, Section section) {
+    public Product(String name, double price, String image, long stock, Section section) {
+        this.name = name;
+        this.price = price;
+        this.image = image;
+        this.stock = stock;
+        this.section = section;
+    }
+
+    public Product(long id, String name, double price, String image, long stock, Section section) {
         this.id = id;
+        this.name = name;
         this.price = price;
         this.image = image;
         this.stock = stock;
@@ -38,6 +49,14 @@ public class Product {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getPrice() {

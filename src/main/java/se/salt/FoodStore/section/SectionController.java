@@ -18,10 +18,15 @@ public class SectionController {
         return ResponseEntity.ok(sectionService.listAll());
     }
 
+    @GetMapping("/{name}")
+    ResponseEntity getByName(@PathVariable String name) {
+        return ResponseEntity.ok(sectionService.findByName(name));
+    }
+
     @PostMapping
     ResponseEntity createSection(@RequestBody Section section) {
         Section created = sectionService.createSection(section);
-        return ResponseEntity.created(URI.create("/api/sections/")).body(created);
+        return ResponseEntity.created(URI.create("/api/sections/" + created.getId())).body(created);
     }
 
 

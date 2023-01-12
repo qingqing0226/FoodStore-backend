@@ -18,4 +18,8 @@ public class SectionRepository {
     public Section save(Section section) {
         return jpaSectionRepository.save(section);
     }
+
+    public Section findByName(String name) {
+        return jpaSectionRepository.findByName(name);
+    }
 }

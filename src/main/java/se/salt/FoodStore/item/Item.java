@@ -26,6 +26,12 @@ public class Item {
     public Item() {
     }
 
+    public Item(Product product, int amount, Cart cart) {
+        this.product = product;
+        this.amount = amount;
+        this.cart = cart;
+    }
+
     public Item(long id, Product product, int amount, Cart cart) {
         this.id = id;
         this.product = product;

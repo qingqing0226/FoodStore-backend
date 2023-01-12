@@ -26,6 +26,10 @@ public class Cart {
     public Cart() {
     }
 
+    public Cart(User user) {
+        this.user = user;
+    }
+
     public Cart(long id, User user, List<Item> items) {
         this.id = id;
         this.user = user;
