@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import se.salt.FoodStore.product.dto.CreateProductDTO;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -24,5 +25,11 @@ public class ProductController {
     ResponseEntity createProduct(@RequestBody CreateProductDTO createProductDTO) {
         Product created = productService.createProduct(createProductDTO);
         return ResponseEntity.created(URI.create("/api/products/" + created.getId())).body(created);
+    }
+
+    @PostMapping("/list")
+    ResponseEntity createProducts(@RequestBody List<CreateProductDTO> createProductDTOs) {
+        List<Product> created =createProductDTOs.stream().map(dto -> productService.createProduct(dto)).toList();
+        return ResponseEntity.created(URI.create("/api/products/")).body(created);
     }
 }

@@ -25,4 +25,8 @@ public class ProductService {
         Section section = sectionService.findByName(createProductDTO.section());
         return productRepository.saveProduct(new Product(createProductDTO.name(), createProductDTO.price(), createProductDTO.image(), createProductDTO.stock(), section));
     }
+
+    public Product save(Product product) {
+        return productRepository.saveProduct(product);
+    }
 }

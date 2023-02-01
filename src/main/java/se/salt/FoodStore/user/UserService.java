@@ -19,4 +19,12 @@ public class UserService {
     public User createUser(User user) {
         return userRepository.saveUser(user);
     }
+
+    public User getById(long id) {
+        return userRepository.findById(id);
+    }
+
+    public User getByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }
