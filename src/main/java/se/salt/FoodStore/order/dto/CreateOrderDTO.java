@@ -5,5 +5,5 @@ import se.salt.FoodStore.user.User;
 
 import java.util.List;
 
-public record CreateOrderDTO(User user, List<CreateItemDTO> createItemDTOList) {
+public record CreateOrderDTO(User user, List<CreateItemDTO> items) {
 }

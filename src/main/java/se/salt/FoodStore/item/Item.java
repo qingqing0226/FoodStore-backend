@@ -1,5 +1,6 @@
 package se.salt.FoodStore.item;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import se.salt.FoodStore.cart.Cart;
 import se.salt.FoodStore.order.Order;
@@ -26,6 +27,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
+    @JsonIgnore
     private Order order;
 
     public Item() {
@@ -36,10 +38,9 @@ public class Item {
         this.amount = amount;
     }
 
-    public Item(Product product, int amount, Cart cart, Order order) {
+    public Item(Product product, int amount, Order order) {
         this.product = product;
         this.amount = amount;
-        this.cart = cart;
         this.order = order;
     }
 

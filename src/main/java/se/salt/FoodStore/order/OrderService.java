@@ -41,17 +41,25 @@ public class OrderService {
         userInDB.setAddress(user.getAddress());
         userInDB.setPhone(user.getPhone());
         User saved = userService.createUser(userInDB);
+
+        // save order
+        Order saveOrder = orderRepository.save(new Order());
+        saveOrder.setUser(saved);
+        saveOrder = orderRepository.save(saveOrder);
+
+        Order finalOrder = saveOrder;
         // save items
         List<Item> items = createOrderDTO
-                .createItemDTOList()
+                .items()
                 .stream()
                 .map(dto -> {
                     Product p = dto.product();
                     p.setStock(p.getStock() - dto.amount());
                     Product savedP = productService.save(p);
-                    return itemService.saveItem(new Item(savedP, dto.amount()));
+                    return itemService.saveItem(new Item(savedP, dto.amount(), finalOrder));
                 }).toList();
-        Order saveOrder = orderRepository.save(new Order(saved, items));
-        return saveOrder;
+
+        return orderRepository.save(finalOrder);
     }
+
 }
