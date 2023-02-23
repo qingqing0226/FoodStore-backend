@@ -40,7 +40,7 @@ public class OrderService {
         userInDB.setEmail(user.getEmail());
         userInDB.setAddress(user.getAddress());
         userInDB.setPhone(user.getPhone());
-        User saved = userService.createUser(userInDB);
+        User saved = userService.saveUser(userInDB);
 
         // save order
         Order saveOrder = orderRepository.save(new Order());

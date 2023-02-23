@@ -34,7 +34,13 @@ public class User {
         this.phone = phone;
     }
 
-
+    public User(long id, String name, String email, String address, String phone) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+    }
     public long getId() {
         return id;
     }
